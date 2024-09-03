@@ -1,0 +1,103 @@
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cartão de Visita - Josemar Luiz</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: url('https://i.pinimg.com/736x/71/9b/92/719b92aac747ac0e1adc20ee80e13dcc.jpg') no-repeat center center fixed; 
+                background-size: cover; 
+                font-family: 'Roboto', sans-serif;
+            }
+            .card {
+                background-color: rgba(255, 255, 255, 0.9); 
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px;
+                width: 350px; 
+                text-align: center;
+            }
+            .header {
+                background-color: #8B4513; 
+                color: white;
+                padding: 15px;
+                border-radius: 10px 10px 0 0;
+            }
+            .name {
+                font-size: 2em; 
+                font-weight: bold;
+                color: #ffffff; 
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+            }
+            .avatar {
+                margin: 15px 0;
+                border-radius: 10%; 
+                width: 100%;
+                max-width: 180px; 
+                border: 3px solid #8B4513; 
+            }
+            .highlight {
+                font-weight: bold;
+                color: #8B4513; 
+                font-size: 1.1em; 
+            }
+            .qr-code {
+                margin-top: 20px;
+                width: 120px; 
+                height: 120px; 
+            }
+            .footer {
+                margin-top: 20px;
+                font-size: 0.9em; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="header">
+                <h1 class="name">Josemar Luiz</h1>
+                <p>Montador de Móveis</p>
+            </div>
+            <img class="avatar" src="https://i.pinimg.com/1200x/35/fd/af/35fdafb829cd5b71dac91a25f547ad8c.jpg" alt="Avatar" />
+            <p class="highlight">Disponibilidade:</p>
+            <p>Feriados e finais de semana, a partir das 18h.</p>
+            <p class="highlight">Descrição:</p>
+            <p>Venha conhecer mais sobre nossos serviços de montagem de móveis e como podemos ajudar a transformar seu espaço!</p>
+            <div class="qr-code">
+                <img id="qrcode" src="https://qr.io/qr-svg/hEes5t.svg?1725401579541" alt="Novo QR Code" />
+            </div>
+        </div>
+    <script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+    </html>
